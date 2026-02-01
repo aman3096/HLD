@@ -2,4 +2,4 @@
 HLD diagrams and my approach for practicing various problems
 Includes
 1. Notification Service in draw.io
-https://app.diagrams.net/#G1_khe6yAfkEWuMt0I8YQvjYliJQ51dvs2#%7B%22pageId%22%3A%22oLeu16xWjRZ0rUu6ulbo%22%7D
+<img width="1196" height="694" alt="image" src="https://github.com/user-attachments/assets/c544b67e-ddb7-4d20-893e-177d0f66cebd" />
