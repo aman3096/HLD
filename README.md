@@ -1,7 +1,7 @@
 # High-Level Design/ System Design (HLD) for self-practice
 High-Level Design diagrams for practicing various problems, learning Domain Driven Design, understanding backend concepts, understanding functional and non-functional requirements, and an overview of the components involved.
 Includes
-## Notification Service / Design Brevo - Notification Service
+# Notification Service / Design Brevo - Notification Service
   ## Functional Requirements
   1. The service should be able to send all kinds of notifications - be in SMS/Emails/ In-App/ Transactions/ Promotions
   2. It should be pluggable - meaning that notifications can be sent via SMS/Email/In-App or Telephone
