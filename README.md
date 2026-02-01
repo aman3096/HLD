@@ -12,3 +12,14 @@ Includes
   1. This service should be available
   2. This service should be able to send notifications to multiple users
 <img width="1196" height="694" alt="image" src="https://github.com/user-attachments/assets/c544b67e-ddb7-4d20-893e-177d0f66cebd" />
+
+  ## Core Architecture Flow
+    1. Clients send requests to a Notification Service, which validates inputs and queues them to Kafka. Messages then flow through:
+    2. Notification Validator & Prioritizer: Assigns priority (high/medium/low) based on type (e.g., OTP high, promo low) and routes to priority-specific Kafka topics.
+    3. Rate Limiter: Uses Redis for client/user counters (e.g., increments keys by time window like day/second; drops or bills excess).
+    4. Notification Handler & User Preferences: Checks user DB/service for prefs (e.g., no SMS, unsubscribe promo); fetches contact info (email/phone) from User Service.
+    5. Channel Handlers (SMS, Email, In-App, IVRS): Separate services consume from channel-specific Kafka topics, integrate with vendors (e.g., regional SMS providers, SMTP, Firebase), and scale independently.
+    6. Notification Tracker: Logs all sends to Cassandra for auditing.
+    7. Bulk Notifications UI → Bulk Notification Service: Takes filter criteria (e.g., "users who ordered milk 3 days ago") and message.
+    8. Leverages User Transaction Data (parsed from external Kafkas into Elasticsearch/MongoDB via Transaction Data Parser).
+    9. Query Engine runs complex filters/aggregations to get user lists, then feeds to main Notification Service
